@@ -4,7 +4,7 @@ Created on Sat Aug  8 20:32:04 2020
 
 @author: Piyush
 """
-
+import random
 import time
 from bot import UpworkSeleniumBot
 from query_manager import UpworkQueryManager
@@ -36,10 +36,11 @@ def main():
             
         except:
             pass
-        time.sleep(2)
+        time.sleep(random.uniform(1.8, 3.6))
         
-    bot.close_driver()
+#    bot.close_driver()
     
     return freelancers
     
     
+

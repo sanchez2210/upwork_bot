@@ -1,7 +1,7 @@
 import time
 from selenium import webdriver
 from query_manager import UpworkQueryManager
-
+from bs4 import BeautifulSoup
 
 class UpworkSeleniumBot:
     driver_path = 'C:\Program Files (x86)\chromedriver.exe'
@@ -21,6 +21,9 @@ class UpworkSeleniumBot:
         while current_tries <= self.max_tries and not_loaded:
             try:
                 self.driver.get(url)
+                if self.is_captcha(self.driver.page_source):
+                    input('Please solve the captcha: ')
+                    
             except:
                 pass
             
@@ -33,7 +36,6 @@ class UpworkSeleniumBot:
         if current_tries > self.max_tries:
             return None
         
-        time.sleep(1.5)
         self.is_page_loaded = True
         return self.driver.page_source
         
@@ -45,6 +47,17 @@ class UpworkSeleniumBot:
     
     def close_driver(self, ):
         self.driver.quit()
+        
+        
+    def is_captcha(self, src):
+        soup = BeautifulSoup(src, 'lxml')
+        text = 'Please verify you are a human'
+        h1 = soup.find('h1')
+        if h1 and text in h1.text:
+            return True
+        return False
+
+        
 
                 
 Bot = UpworkSeleniumBot
