@@ -22,7 +22,9 @@ class UpworkSeleniumBot:
             try:
                 self.driver.get(url)
                 if self.is_captcha(self.driver.page_source):
-                    input('Please solve the captcha: ')
+                    input('Please solve the captcha type anything once done!: ')
+                    time.sleep(2)
+                    
                     
             except:
                 pass

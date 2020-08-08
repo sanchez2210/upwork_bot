@@ -10,8 +10,8 @@ from bot import UpworkSeleniumBot
 from query_manager import UpworkQueryManager
 from upwork_scraper import UpworkScraper
 from save_soup import save_soup
-
-
+import json
+from datetime import datetime
 
 
 query = 'Software Developer'
@@ -40,7 +40,27 @@ def main():
         
 #    bot.close_driver()
     
-    return freelancers
+#    return freelancers
     
+    now = datetime.now()
+    timestamp = now.strftime("%d_%b_%Y_time_%H_%M_%p")
     
+    directory = 'assets/'
+    
+    file_name = query + '_' + timestamp + '.txt'
+    
+    file_path = directory + file_name
+    
+    JSON = json.dumps(freelancers)
+    with open(file_path, 'w') as f:
+        f.write(JSON)
+        print('File: %s written successfully...' % (file_name))
+        
+
+    
+    return JSON
+
+
+
+
 
