@@ -4,7 +4,7 @@ from query_manager import UpworkQueryManager
 from bs4 import BeautifulSoup
 
 class UpworkSeleniumBot:
-    driver_path = 'C:\Program Files (x86)\chromedriver.exe'
+    driver_path = '/usr/bin/chromedriver'
     max_tries = 3
     def __init__(self, query_manager):
         self.manager = query_manager

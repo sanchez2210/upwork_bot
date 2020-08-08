@@ -14,8 +14,8 @@ from save_soup import save_soup
 
 
 
-query = 'Software Developer'
-num_pages = 2
+query = 'Website Developer'
+num_pages = 20
 
 
 
@@ -31,16 +31,13 @@ def main():
             src = bot.get_source(url)
             scraper = UpworkScraper(src)
             freelancers +=scraper.get_freelance_details()
-            
-            
-            
+
+
+
         except:
             pass
         time.sleep(random.uniform(1.8, 3.6))
-        
-#    bot.close_driver()
-    
-    return freelancers
-    
-    
 
+#    bot.close_driver()
+
+    return freelancers
